@@ -56,7 +56,7 @@ self.addEventListener('push', function(event) {
 		icon: data.avatar,
 		badge: data.badge,
 		vibrate: [300, 100, 400],
-		timestamp: data.time,
+		timestamp: data.time * 1000,
 		requireInteraction: true
 	};
 

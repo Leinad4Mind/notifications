@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * @package       Push Notifications
@@ -25,7 +26,7 @@ class m1_initial extends \phpbb\db\migration\migration
 				$this->table_prefix . 'push_subscriptions' => [
 					'COLUMNS'     => [
 						'subscription_id' => ['UINT', null, 'auto_increment'],
-						'endpoint'        => ['VCHAR', ''],
+						'endpoint'        => ['VCHAR:500', ''],
 						'push_key_auth'   => ['VCHAR', ''],
 						'push_key_p256dh' => ['VCHAR', ''],
 						'user_id'         => ['UINT', 0],
@@ -47,8 +48,7 @@ class m1_initial extends \phpbb\db\migration\migration
 
 	public function update_data()
 	{
-		if (!isset($this->config['push_api_public_key']) || !isset($this->config['push_api_private_key']))
-		{
+		if (!isset($this->config['push_api_public_key']) || !isset($this->config['push_api_private_key'])) {
 			$VAPID_keys = $this->get_VAPID_keys();
 			return [
 				['config.add', ['push_api_private_key', $VAPID_keys['privateKey']]],
@@ -68,8 +68,7 @@ class m1_initial extends \phpbb\db\migration\migration
 	{
 		static $VAPID_keys = null;
 
-		if (is_null($VAPID_keys))
-		{
+		if (is_null($VAPID_keys)) {
 			include_once($this->phpbb_root_path . 'ext/lavigor/notifications/vendor/autoload.' . $this->php_ext);
 			$VAPID_keys = VAPID::createVapidKeys(); // Should be created only once for the web app.
 		}

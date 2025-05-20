@@ -1,9 +1,9 @@
 <!-- IF S_REGISTERED_USER and not S_IS_BOT and (S_PUSH_DROPDOWN_INTEGRATION or S_IN_UCP and MODE == 'notification_options') -->
 <script type="text/javascript">
-//<![CDATA[
+	//<![CDATA[
 	var pushNotifications = {
-		dropdownIntegration: '{S_PUSH_DROPDOWN_INTEGRATION}',
-		introConfirmation: '{S_PUSH_INTRO_CONFIRMATION}',
+		dropdownIntegration: { S_PUSH_DROPDOWN_INTEGRATION },
+		introConfirmation: { S_PUSH_INTRO_CONFIRMATION },
 		language: {
 			ACTIONS: {
 				ENABLED: '{LA_BROWSER_NOTIFICATIONS_ACTION_ENABLED}',
@@ -23,11 +23,11 @@
 			UPDATE_FAILED: '{LA_BROWSER_NOTIFICATIONS_UPDATE_FAILED}'
 		},
 		notificationsPath: '{ROOT_PATH}notifications/browser/',
-		notificationsPage: <!-- IF S_IN_UCP and MODE == 'notification_options' -->true<!-- ELSE -->false<!-- ENDIF -->,
-		serviceWorkerPath: '{ROOT_PATH}ext/lavigor/notifications/styles/all/template/js/sw.js',
-		serverAPIkey: '{PUSH_API_PUBLIC_KEY}'
+		notificationsPage: <!-- IF S_IN_UCP and MODE == 'notification_options' -->tru e <!- ELSE - - >fals e <!- ENDIF -->,
+			serviceWorkerPath: '{ROOT_PATH}ext/lavigor/notifications/styles/all/template/js/sw.js',
+				serverAPIkey: '{PUSH_API_PUBLIC_KEY}'
 	};
-//]]>
+	//]]>
 </script>
 <!-- INCLUDECSS @lavigor_notifications/notifications.css -->
 <!-- INCLUDEJS @lavigor_notifications/js/notifications.js -->
